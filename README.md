@@ -1,24 +1,14 @@
-# README
+# library-book-management
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on rails project is expected to be built in 2 weeks for IT日本語 subject report. The project creates a website to help manage books in the library, providing loan and return management functions, web readers can search for titles, comment on each book borrowed, and check history. borrow and return my books
 
-Things you may want to cover:
 
-* Ruby version
+# setup program 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+clone this repo
+run command in terminal to start project
+* cd library-book-management
+* bundle install
+* yarn install --check-files
+* rake db:migrate
+* rails s
