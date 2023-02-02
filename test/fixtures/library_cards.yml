@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 2023-02-02
+  expiration_date: 2023-02-02
+  note: MyText
+
+two:
+  start_date: 2023-02-02
+  expiration_date: 2023-02-02
+  note: MyText

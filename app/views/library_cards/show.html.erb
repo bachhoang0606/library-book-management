@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @library_card.start_date %>
+</p>
+
+<p>
+  <strong>Expiration date:</strong>
+  <%= @library_card.expiration_date %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @library_card.note %>
+</p>
+
+<%= link_to 'Edit', edit_library_card_path(@library_card) %> |
+<%= link_to 'Back', library_cards_path %>

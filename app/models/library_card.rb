@@ -1,0 +1,2 @@
+class LibraryCard < ApplicationRecord
+end
