@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  library_card: one
+  admin: one
+  borrow_date: 2023-02-02
+  book: one
+  note: MyText
+  paid: false
+  pay_day: 2023-02-02
+
+two:
+  library_card: two
+  admin: two
+  borrow_date: 2023-02-02
+  book: two
+  note: MyText
+  paid: false
+  pay_day: 2023-02-02

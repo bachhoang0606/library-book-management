@@ -1,0 +1,65 @@
+<div class="container">
+<h3 class="text-center">借りた本の詳細</h3>
+<hr>
+<br>
+<div class="row">
+  <div class="col-4"> 
+    <img src="..." class="img-fluid rounded-start" alt="イメージ" >
+        <%
+=begin%>
+<% if borrow_pay.book.image.attached? %>
+          <%= image_tag borrow_pay.book.image, class: "img-fluid rounded-start", alt: "イメージ" %>
+        <% end %> 
+<%
+=end%>
+  </div>
+  <div class="col-8">
+    <p>図書館カードコード: <%= @borrow_pay.library_card_id %></p>
+    <p>読者のメール: <%= @borrow_pay.library_card.reader.email %></p>
+    <p>読者の名前: <%= @borrow_pay.library_card.reader.name %></p>
+  </div>
+</div>
+<hr>
+<br>
+<div class="row">
+  <div class="col-4"> 
+    <img src="..." class="img-fluid rounded-start" alt="本のイメージ" >
+        <%
+=begin%>
+<% if borrow_pay.book.image.attached? %>
+          <%= image_tag borrow_pay.book.image, class: "img-fluid rounded-start", alt: "イメージ" %>
+        <% end %> 
+<%
+=end%>
+  </div>
+  <div class="col-8">
+    <p>本のコード: <%= @borrow_pay.book_id %></p>
+    <p>書名: <%= @borrow_pay.book.name %></p>
+    <p>カテゴリー: <%= @borrow_pay.book.category.name %></p>
+    <p>生産者: <%= @borrow_pay.book.publisher.name %></p>
+    <p>年: <%= @borrow_pay.book.year %></p>
+  </div>
+</div>
+
+<br>
+<p>ノート: <%= @borrow_pay.note %></p>
+<p><small class="text-muted">借りた日: <%= @borrow_pay.borrow_date %></small></p>
+<p><small class="text-muted">返した日: <%= @borrow_pay.paid ? @borrow_pay.pay_day : "まだ返さない" %></small></p>
+<div class="text-center">
+  <%
+=begin%>
+ <%= link_to 'Edit', edit_borrow_pay_path(@borrow_pay), class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;"  %> | 
+<%
+=end%>
+<% if !@borrow_pay.paid && admin_signed_in? %>
+  <%= form_with(model: @borrow_pay) do |form|%>
+    <%= form.hidden_field :paid, :value => true %>
+    <%= form.submit '本を返す', class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %>
+  <% end %>
+<% end %>
+  <hr>
+  <%= link_to '戻る', borrow_pays_path, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;"  %>
+
+</div>
+
+</div>
