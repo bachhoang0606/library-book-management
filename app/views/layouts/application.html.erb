@@ -13,6 +13,10 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+
+    <% if reader_signed_in? %>
+      <%= link_to "sign out", destroy_reader_session_path , method: :delete %>
+    <% end %>
+    <%= yield %> 
   </body>
 </html>

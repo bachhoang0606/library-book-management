@@ -1,0 +1,31 @@
+<h2>Reader info</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>email</th>
+            <th>address</th>
+            <th>create at</th>
+            <th>updated_at at</th>
+            <th>card id</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= @reader.name %></td>
+            <td><%= @reader.email %></td>
+            <td><%= @reader.address %></td>
+            <td><%= @reader.created_at %></td>
+            <td><%= @reader.updated_at %></td>
+            <td><% if @reader.library_card_id %>
+                    <%= @reader.library_card_id %>
+                <% else %>
+                        no card
+                <% end %>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<%= link_to 'back to list', '/readers/' %>

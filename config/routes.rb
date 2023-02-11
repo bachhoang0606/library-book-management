@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/new'
+  get 'home/create'
   devise_for :admins
   devise_for :readers
   resources :library_cards
@@ -6,6 +8,10 @@ Rails.application.routes.draw do
   resources :publishers
   resources :categories
   resources :authors
+  
+  resources :readers
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "home#index"
+  get 'home/', to: "home#index"
+  # root to: "home#index"
+  # get '/reader/:email', to: 'reader#show'
 end

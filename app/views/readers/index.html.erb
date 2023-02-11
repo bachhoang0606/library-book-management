@@ -1,0 +1,23 @@
+<h2>Readers</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>email</th>
+            <th>create at</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @readers.each do |reader| %>
+        <tr>
+            <td><%= reader.name %></td>
+            <td><%= reader.email %></td>
+            <td><%= reader.created_at %></td>
+            <td><%= link_to "show", reader %></td>
+            <td><%= link_to "delete", reader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
