@@ -1,4 +1,6 @@
 <div class="container">
+<%= link_to "sign out", destroy_reader_session_path , method: :delete %>
+
 <h2>Readers manage</h2>
 
 <table class="table">
@@ -6,7 +8,6 @@
         <tr>
             <th scope="col">name</th>
             <th scope="col">email</th>
-            <th scope="col">create at</th>
             <th colspan="2"></th>
         </tr>
     </thead>
@@ -15,7 +16,6 @@
         <tr>
             <td><%= reader.name %></td>
             <td><%= reader.email %></td>
-            <td><%= reader.created_at %></td>
             <td><%= link_to "show", reader %></td>
             <td><%= link_to "delete", reader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>

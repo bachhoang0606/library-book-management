@@ -1,5 +1,5 @@
 class ReadersController < ApplicationController
-    #before_action :authenticate_admin!
+    before_action :authenticate_admin!
 
     def index
         @readers = Reader.all

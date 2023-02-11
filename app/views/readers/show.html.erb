@@ -1,4 +1,6 @@
 <div class="container">
+<%= link_to "sign out", destroy_admin_session_path , method: :delete %>
+
 <h2>Reader info</h2>
 
 <table class="table">
@@ -6,7 +8,6 @@
         <tr>
             <th scope="col">name</th>
             <th scope="col">email</th>
-            <th scope="col">address</th>
             <th scope="col">create at</th>
             <th scope="col">updated_at at</th>
             <th scope="col">card id</th>
@@ -16,7 +17,6 @@
         <tr>
             <td><%= @reader.name %></td>
             <td><%= @reader.email %></td>
-            <td><%= @reader.address %></td>
             <td><%= @reader.created_at %></td>
             <td><%= @reader.updated_at %></td>
             <td><% if @reader.library_card_id %>
