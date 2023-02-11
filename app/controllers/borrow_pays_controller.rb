@@ -16,7 +16,7 @@ class BorrowPaysController < ApplicationController
         end
       else 
         if params[:paid].blank?
-          @borrow_pays = BorrowPay.where(library_card_id: params[:search])
+          @borrow_pays = BorrowPay.where(library_card_id: params[:search]);
         else
           @borrow_pays = BorrowPay.where(paid: params[:paid], library_card_id: params[:search]);
         end
@@ -25,7 +25,7 @@ class BorrowPaysController < ApplicationController
 
     if reader_signed_in?
       if params[:paid].blank?
-        @borrow_pays = BorrowPay.where(library_card_id: current_reader.library_card_id)
+        @borrow_pays = BorrowPay.where(library_card_id: current_reader.library_card_id);
       else
         @borrow_pays = BorrowPay.where(paid: params[:paid], library_card_id: current_reader.library_card_id);
       end
@@ -118,7 +118,7 @@ class BorrowPaysController < ApplicationController
       if admin_signed_in?
         return true
       elsif current_reader.id == @borrow_pay.library_card.reader.id
-        reutrn true
+        return true
       else
         flash[:notice] = "あなたはこのカードの所有者ではありません"
         redirect_to borrow_pays_path
