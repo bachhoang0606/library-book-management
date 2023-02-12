@@ -16,7 +16,7 @@ class BorrowPaysController < ApplicationController
         end
       else 
         if params[:paid].blank?
-          @borrow_pays = BorrowPay.where(library_card_id: params[:search])
+          @borrow_pays = BorrowPay.where(library_card_id: params[:search]);
         else
           @borrow_pays = BorrowPay.where(paid: params[:paid], library_card_id: params[:search]);
         end
@@ -25,7 +25,7 @@ class BorrowPaysController < ApplicationController
 
     if reader_signed_in?
       if params[:paid].blank?
-        @borrow_pays = BorrowPay.where(library_card_id: current_reader.library_card_id)
+        @borrow_pays = BorrowPay.where(library_card_id: current_reader.library_card_id);
       else
         @borrow_pays = BorrowPay.where(paid: params[:paid], library_card_id: current_reader.library_card_id);
       end
@@ -64,10 +64,10 @@ class BorrowPaysController < ApplicationController
   def update
     respond_to do |format|
       if @borrow_pay.update(borrow_pay_params_payal)
-        format.html { redirect_to borrow_pay_url(@borrow_pay), notice: "借り貸しカードが更新されました。" }
+        format.html { redirect_to borrow_pays_path, notice: "借り貸しカードが更新されました。" }
         format.json { render :show, status: :ok, location: @borrow_pay }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { redirect_to borrow_pays_path, notice: "エラーが発生しました。" }
         format.json { render json: @borrow_pay.errors, status: :unprocessable_entity }
       end
     end
@@ -98,7 +98,7 @@ class BorrowPaysController < ApplicationController
     # Only update pay day and paid when payal.
     def borrow_pay_params_payal
       params.require(:borrow_pay).permit(:paid, :pay_day)
-      .with_defaults(pay_day: Date.current)
+      .with_defaults(pay_day: Date.current, paid: true)
     end
 
     def signed_in?
@@ -118,7 +118,7 @@ class BorrowPaysController < ApplicationController
       if admin_signed_in?
         return true
       elsif current_reader.id == @borrow_pay.library_card.reader.id
-        reutrn true
+        return true
       else
         flash[:notice] = "あなたはこのカードの所有者ではありません"
         redirect_to borrow_pays_path
