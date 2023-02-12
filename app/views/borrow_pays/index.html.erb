@@ -1,0 +1,131 @@
+<% if admin_signed_in? %> 
+  <!-- The form -->
+  <form class="example" action="/borrow_pays" method="get">
+  <div class="d-flex justify-content-center">
+    <div class="w-50 row ">
+      <div class="col-4">
+        <select class="form-select" aria-label="Default select example" name="paid">
+          <option value="" selected>全部</option>
+          <option value="false">借りている</option>
+          <option value="true">返していない</option>
+        </select>
+      </div>
+      <div class="col-8">
+        <input type="text" placeholder="図書館カードで探す" name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+  </form>
+<% end %>
+
+<% if reader_signed_in? %> 
+<nav class="navbar navbar-expand-sm bg-light justify-content-center">
+  <form class="example" action="/borrow_pays" method="get">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <%= link_to '全部', borrow_pays_path(:paid => nil), class: "nav-link", method: :get %>
+    </li>
+    <li class="nav-item">
+      <%= link_to '借りている', borrow_pays_path(:paid => false), class: "nav-link", method: :get %>
+    </li>
+    <li class="nav-item">
+      <%= link_to '返していない', borrow_pays_path(:paid => true), class: "nav-link", method: :get %>
+    </li>
+  </ul>
+</nav>
+<% end %>
+<br><br><br><br>
+<div class="container d-flex flex-column align-items-center">
+<h1 class="text-center">借り貸しリスト</h1>
+<hr>
+<% @borrow_pays.each do |borrow_pay| %>
+  <div class="card mb-3 mt-3 border-<%= borrow_pay.paid ? "success" : "warning"%>" style="min-width: 1000px; max-width:1500px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="..." class="img-fluid rounded-start" alt="イメージ" >
+        <%
+=begin%>
+<% if borrow_pay.book.image.attached? %>
+          <%= image_tag borrow_pay.book.image, class: "img-fluid rounded-start", alt: "イメージ" %>
+        <% end %> 
+<%
+=end%>
+      </div>
+      <div class="col-md-8">
+        <div class="card-header">書名: <%= borrow_pay.book.name %></div>
+        <div class="card-body <%= borrow_pay.paid ? "text-success" : ""%>">
+          <h5 class="card-title">図書館カード ​​コード: <%= borrow_pay.library_card_id %> は 本のコード: <%= borrow_pay.book_id %> を 借ります</h5>
+          <p class="card-text">ノート: <%= borrow_pay.note %></p>
+          <p class="card-text"><small class="text-muted">借りた日: <%= borrow_pay.borrow_date %></small></p>
+          <p class="card-text"><small class="text-muted">返した日: <%= borrow_pay.paid ? borrow_pay.pay_day : "まだ返さない" %></small></p>
+        </div>
+        <div class="card-footer d-flex justify-content-around">
+          <%= link_to '見せる', borrow_pay, class: "btn btn-outline-info text-info" %> 
+          <%
+=begin%>
+ <%= link_to '編集', edit_borrow_pay_path(borrow_pay), class: "btn btn-outline-secondary" %>  
+<%
+=end%>
+          <% if admin_signed_in? %> 
+            <%= link_to '消す', borrow_pay, method: :delete, data: { confirm: '本気ですか？' }, class: "btn btn-outline-danger text-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<br>
+<% if admin_signed_in? %> 
+<div class="text-center">
+  <%= link_to '本を借りる', new_borrow_pay_path, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %>
+</div>
+<% end %>
+
+</div>
+<% if reader_signed_in? %> 
+  <%= link_to "readerサインアウト", destroy_reader_session_path, method: :delete %><br>
+<% end %>
+<% if admin_signed_in? %> 
+  <%= link_to "adminサインアウト", destroy_admin_session_path, method: :delete %><br>
+<% end %>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the search field */
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>

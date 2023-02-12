@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_02_133839) do
+ActiveRecord::Schema.define(version: 2023_02_02_140032) do
+
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,6 +45,21 @@ ActiveRecord::Schema.define(version: 2023_02_02_133839) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_books_on_category_id"
     t.index ["publisher_id"], name: "index_books_on_publisher_id"
+  end
+
+  create_table "borrow_pays", force: :cascade do |t|
+    t.integer "library_card_id", null: false
+    t.integer "admin_id", null: false
+    t.date "borrow_date"
+    t.integer "book_id", null: false
+    t.text "note"
+    t.boolean "paid"
+    t.date "pay_day"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_borrow_pays_on_admin_id"
+    t.index ["book_id"], name: "index_borrow_pays_on_book_id"
+    t.index ["library_card_id"], name: "index_borrow_pays_on_library_card_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -87,4 +103,8 @@ ActiveRecord::Schema.define(version: 2023_02_02_133839) do
 
   add_foreign_key "books", "categories"
   add_foreign_key "books", "publishers"
+  add_foreign_key "borrow_pays", "admins"
+  add_foreign_key "borrow_pays", "books"
+  add_foreign_key "borrow_pays", "library_cards"
+
 end
