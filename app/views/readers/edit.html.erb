@@ -1,0 +1,44 @@
+<h2>Edit reader info</h2>
+
+<%= form_with(model: @reader) do |form| %>
+    <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+    <br />
+    <div class="field">
+        <%= form.label :address %>
+        <%= form.text_field :address %>
+    </div>
+    <br />
+    <div class="field">
+        <%= form.label :email %>
+        <%= form.email_field :email %>
+    </div>
+    <br />
+    <div class="field">
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+    </div>
+    <br />
+    <div class="field">
+        <%= form.label :library_card_id %>
+        <% @library_cards = LibraryCard.all %>
+        <% if @library_cards.length() > 0 %>
+            <% @arr = [] %>
+            <% @library_cards.each do |lib_card|
+                    @arr.append(lib_card.id)
+                end    
+            %>
+            <%= form.select :library_card_id, @arr %>
+        <% else %>
+        no card found in database
+        <% end %>
+    </div>
+    <br />
+    <div class="action">
+        <%= form.submit "Update" %>
+    </div>
+<% end %>
+<br />
+<%= link_to "Back",  readers_path %>

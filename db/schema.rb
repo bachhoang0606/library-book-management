@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2023_02_02_140032) do
 
+
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -105,4 +106,5 @@ ActiveRecord::Schema.define(version: 2023_02_02_140032) do
   add_foreign_key "borrow_pays", "admins"
   add_foreign_key "borrow_pays", "books"
   add_foreign_key "borrow_pays", "library_cards"
+
 end
