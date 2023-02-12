@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   get 'home/new'
   get 'home/create'
   devise_for :admins
-  devise_for :readers
+  devise_for :readers, controllers: {
+    sessions: 'readers/sessions',
+    registration: 'readers/registrations'
+  }
   resources :library_cards
   resources :books
   resources :publishers
