@@ -1,28 +1,28 @@
-<h2>Edit reader info</h2>
+<h2>読者情報変換</h2>
 
 <%= form_with(model: @reader) do |form| %>
     <div class="field">
-        <%= form.label :name %>
+        <%= form.label :ユーザネム %>
         <%= form.text_field :name %>
     </div>
     <br />
     <div class="field">
-        <%= form.label :address %>
+        <%= form.label :アドレス %>
         <%= form.text_field :address %>
     </div>
     <br />
     <div class="field">
-        <%= form.label :email %>
+        <%= form.label :エメル %>
         <%= form.email_field :email %>
     </div>
     <br />
     <div class="field">
-        <%= form.label :password %>
+        <%= form.label :パスワード %>
         <%= form.password_field :password %>
     </div>
     <br />
     <div class="field">
-        <%= form.label :library_card_id %>
+        <%= form.label :図書館カードID %>
         <% @library_cards = LibraryCard.all %>
         <% if @library_cards.length() > 0 %>
             <% @arr = [] %>
@@ -32,13 +32,13 @@
             %>
             <%= form.select :library_card_id, @arr %>
         <% else %>
-        no card found in database
+        データベースにカードがありません
         <% end %>
     </div>
     <br />
     <div class="action">
-        <%= form.submit "Update" %>
+        <%= form.submit "サブミット" %>
     </div>
 <% end %>
 <br />
-<%= link_to "Back",  readers_path %>
+<%= link_to "戻る",  readers_path %>
