@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Reader::RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -10,17 +10,9 @@ class Reader::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    @reader = Reader.new(reader_params)   
-        if @reader.save   
-            flash[:notice] = 'Reader added!'
-            puts 'da tao thanh cong'   
-            redirect_to readers_path   
-        else   
-            flash[:error] = 'Failed to create reader!'   
-            render :new   
-        end 
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
