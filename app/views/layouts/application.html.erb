@@ -52,14 +52,20 @@
 
       <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
-          <a class="p-2 text-muted" href="<%= borrow_pays_path%>">Borrow Pays</a>
-          <a class="p-2 text-muted" href="<%= readers_path %>">Readers</a>
-          <a class="p-2 text-muted" href="<%= library_cards_path %>">Library Cards</a>
-          <a class="p-2 text-muted" href="<%= books_path %>">Books</a>
-          <a class="p-2 text-muted" href="<%= publishers_path %>">Publisers</a>
-          <a class="p-2 text-muted" href="<%= authors_path %>">Authors</a>
-          <a class="p-2 text-muted" href="<%= categories_path %>">Categories</a>
-          <a class="p-2 text-muted" href="<%= admins_show_path %>">Profile</a>
+        <% if admin_signed_in? %>
+          <a class="p-2 text-muted" href="<%= borrow_pays_path%>">借り貸し</a>
+          <a class="p-2 text-muted" href="<%= readers_path %>">読者</a>
+          <a class="p-2 text-muted" href="<%= library_cards_path %>">図書カード</a>
+          <a class="p-2 text-muted" href="<%= books_path %>">ブック</a>
+          <a class="p-2 text-muted" href="<%= publishers_path %>">パブリッシャー</a>
+          <a class="p-2 text-muted" href="<%= authors_path %>">著者</a>
+          <a class="p-2 text-muted" href="<%= categories_path %>">カテゴリー</a>
+          <a class="p-2 text-muted" href="<%= admins_show_path %>">プロフィール</a>
+        <% end %>
+        <% if reader_signed_in? %>
+          <a class="p-2 text-muted" href="<%= borrow_pays_path%>">借り貸し</a>
+          <a class="p-2 text-muted" href="<%= readers_path %>">プロフィール</a>
+        <% end %>
         </nav>
       </div>
     <main role="main" class="container">

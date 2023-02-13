@@ -48,7 +48,7 @@
 <div class="text-center">
   <%
 =begin%>
- <%= link_to 'Edit', edit_borrow_pay_path(@borrow_pay), class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;"  %> | 
+ <%= link_to '編集', edit_borrow_pay_path(@borrow_pay), class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;"  %> | 
 <%
 =end%>
 <% if !@borrow_pay.paid && admin_signed_in? %>

@@ -1,6 +1,9 @@
-<h1>Editing Publisher</h1>
+<h1 class="text-center">パブリッシャーの編集</h1>
 
 <%= render 'form', publisher: @publisher %>
 
-<%= link_to 'Show', @publisher %> |
-<%= link_to 'Back', publishers_path %>
+
+<div class="text-center">
+    <%= link_to '見せる', @publisher, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %> |
+    <%= link_to '戻る', publishers_path, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %>
+</div>

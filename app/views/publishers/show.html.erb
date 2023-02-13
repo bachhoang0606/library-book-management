@@ -1,24 +1,23 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @publisher.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @publisher.address %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @publisher.email %>
-</p>
-
-<p>
-  <strong>Deputy:</strong>
-  <%= @publisher.deputy %>
-</p>
-
-<%= link_to 'Edit', edit_publisher_path(@publisher) %> |
-<%= link_to 'Back', publishers_path %>
+<br>
+<br>
+<br>
+<div class="container d-flex justify-content-center">
+<div class="card" style="width: 25rem;">
+  <div class="card-body">
+    <h5 class="card-title">  <strong>名前:</strong><%= @publisher.name %></h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>住所:</strong><%= @publisher.address %></li>
+    <li class="list-group-item"><strong>メール:</strong><%= @publisher.email %></li>
+    <li class="list-group-item"><strong>デリゲート:</strong><%= @publisher.deputy %></li>
+  </ul>
+</div>
+</div>
+<br>
+<br>
+<br>
+<div class="text-center">
+    <%= link_to '編集', edit_publisher_path(@publisher), class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %> |
+    <%= link_to '戻る', publishers_path, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %>
+</div>

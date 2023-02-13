@@ -1,5 +1,5 @@
 <div class="form_container">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h2>管理者を編集</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "admins/shared/error_messages", resource: resource %>
@@ -7,79 +7,79 @@
 
 
     <div class="mb-3 row enter">
-      <%= f.label :image, class:"col-sm-2 col-form-label" %>
+      <%= f.label "画像", class:"col-sm-2 col-form-label" %>
       <div class="col-sm-10">
         <%= f.file_field :image, class:"form-control-plaintext form-control"%>
       </div>
     </div>
 
     <div class="mb-3 row enter">
-      <%= f.label :name, class:"col-sm-2 col-form-label" %>
+      <%= f.label "名前", class:"col-sm-2 col-form-label" %>
       <div class="col-sm-10">
         <%= f.text_field :name, autofocus: true, class:"form-control-plaintext form-control" %>
       </div>
     </div>
 
     <div class="mb-3 row enter">
-      <%= f.label :phone, class:"col-sm-2 col-form-label" %>
+      <%= f.label "電話", class:"col-sm-2 col-form-label" %>
       <div class="col-sm-10">
         <%= f.text_field :phone, autofocus: true, class:"form-control-plaintext form-control" %>
         </div>
     </div>
 
     <div class="mb-3 row enter">
-      <%= f.label :dob, class:"col-sm-2 col-form-label" %>
+      <%= f.label "生年月日", class:"col-sm-2 col-form-label" %>
       <div class="col-sm-10">
         <%= f.date_field :dob, autofocus: true, class:"form-control-plaintext form-control" %>
         </div>
     </div>
 
     <div class="mb-3 row enter">
-      <%= f.label :email, class:"col-sm-2 col-form-label" %>
+      <%= f.label "メール", class:"col-sm-2 col-form-label" %>
       <div class="col-sm-10">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control-plaintext form-control" %>
         </div>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <div>現在、次の確認を待っています: <%= resource.unconfirmed_email %></div>
     <% end %>
     
     <div class="mb-3 row enter">
-      <%= f.label :password, class:"col-sm-2 col-form-label" %>
+      <%= f.label "パスワード", class:"col-sm-2 col-form-label" %>
       <div class="col-sm-10">
-        <i>(leave blank if you don't want to change it)</i>
+        <i>(変更したくない場合は空白のままにしてください)</i>
         <%= f.password_field :password, autocomplete: "new-password", class:"form-control-plaintext form-control" %>
         <% if @minimum_password_length %>
         <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
+        <em><%= @minimum_password_length %> 文字以上</em>
       <% end %>
       </div>
     </div>
 
     <div class="mb-3 row enter">
-      <%= f.label :password_confirmation, class:"col-sm-2 col-form-label" %>
+      <%= f.label "パスワードの確認", class:"col-sm-2 col-form-label" %>
       <div class="col-sm-10">
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control-plaintext form-control" %>
       </div>
     </div>
 
     <div class="mb-3 row enter">
-      <%= f.label :current_password, class:"col-sm-2 col-form-label" %>
+      <%= f.label "現在のパスワード", class:"col-sm-2 col-form-label" %>
       <div class="col-sm-10">
-        <i>(we need your current password to confirm your changes)</i>
+        <i>(変更を確認するには、現在のパスワードが必要です)</i>
         <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control-plaintext form-control" %>
       </div>
     </div>
 
     <div class="actions">
-      <%= f.submit "Update" ,class:"btn btn-primary"%>
+      <%= f.submit "更新" ,class:"btn btn-primary"%>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"btn btn-danger" %>
-    <%= link_to "Back", :back %>
+    <%= button_to "キャンセル", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"btn btn-danger" %>
+    <%= link_to "戻る", :back %>
   </div>
 
 </div>

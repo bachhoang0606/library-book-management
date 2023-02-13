@@ -1,5 +1,7 @@
-<h1 class="text-center">New Library Card</h1>
+<h1 class="text-center">新しい図書館カード</h1>
 
 <%= render 'form', library_card: @library_card %>
 
-<%= link_to 'Back', library_cards_path %>
+<div class="text-center">
+  <%= link_to '戻る', library_cards_path, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %>
+<div>

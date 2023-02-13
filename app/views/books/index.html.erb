@@ -20,8 +20,8 @@
         <td><%= book.category.name %></td>
         <td><%= book.publisher.name %></td>
         <td><%= book.year %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
+        <td><%= link_to '見せる', book %></td>
+        <td><%= link_to '編集', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
