@@ -21,6 +21,9 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
+    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -52,15 +55,11 @@
           <a class="p-2 text-muted" href="<%= borrow_pays_path%>">Borrow Pays</a>
           <a class="p-2 text-muted" href="<%= readers_path %>">Readers</a>
           <a class="p-2 text-muted" href="<%= library_cards_path %>">Library Cards</a>
-          <a class="p-2 text-muted" href="#">Design</a>
-          <a class="p-2 text-muted" href="#">Culture</a>
-          <a class="p-2 text-muted" href="#">Business</a>
-          <a class="p-2 text-muted" href="#">Politics</a>
-          <a class="p-2 text-muted" href="#">Opinion</a>
-          <a class="p-2 text-muted" href="#">Science</a>
-          <a class="p-2 text-muted" href="#">Health</a>
-          <a class="p-2 text-muted" href="#">Style</a>
-          <a class="p-2 text-muted" href="#">Travel</a>
+          <a class="p-2 text-muted" href="<%= books_path %>">Books</a>
+          <a class="p-2 text-muted" href="<%= publisers_path %>">Publisers</a>
+          <a class="p-2 text-muted" href="<%= authors_path %>">Authors</a>
+          <a class="p-2 text-muted" href="<%= categories_path %>">Categories</a>
+          <a class="p-2 text-muted" href="<%= admin_session_url %>">Profile</a>
         </nav>
       </div>
     <main role="main" class="container">
