@@ -55,7 +55,7 @@
 
         <% if admin_signed_in? %>
           <a class="p-2 text-muted" href="<%= borrow_pays_path%>">借り貸し</a>
-          <a class="p-2 text-muted" href="<%= readers_path %>">読者</a>
+          <a class="p-2 text-muted" href="<%= test_readers_path %>">読者</a>
           <a class="p-2 text-muted" href="<%= library_cards_path %>">図書カード</a>
           <a class="p-2 text-muted" href="<%= books_path %>">ブック</a>
           <a class="p-2 text-muted" href="<%= publishers_path %>">パブリッシャー</a>
@@ -65,7 +65,8 @@
         <% end %>
         <% if reader_signed_in? %>
           <a class="p-2 text-muted" href="<%= borrow_pays_path%>">借り貸し</a>
-          <a class="p-2 text-muted" href="<%= readers_path %>">プロフィール</a>
+          <a class="p-2 text-muted" href="<%= books_path%>">借り貸し</a>
+          <a class="p-2 text-muted" href="/home">プロフィール</a>
         <% end %>
         </nav>
       </div>

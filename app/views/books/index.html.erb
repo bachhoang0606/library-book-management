@@ -21,7 +21,11 @@
             <td><%= book.name %></td>
             <td><%= book.category.name %></td>
             <td><%= book.publisher.name %></td>
-            <td><%= book.author.name %></td>
+            <%
+=begin%>
+ <td><%= book.author.name %></td> 
+<%
+=end%>
             <td><%= book.year %></td>
             <td><%= link_to 'Show', book %></td>
             <td><%= link_to 'Edit', edit_book_path(book) %></td>
