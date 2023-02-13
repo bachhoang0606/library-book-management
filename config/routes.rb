@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :book_reviews
   resources :borrow_pays
   get 'home/new'
   get 'home/create'
