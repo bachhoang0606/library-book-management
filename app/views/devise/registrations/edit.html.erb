@@ -10,8 +10,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :address %><br />
+    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -35,6 +35,13 @@
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="field">
+  <label class="">Avatar:
+  <% if current_reader.avatar.present? %><br />Current: <%= current_reader.avatar.filename.to_s %><% end %>
+  </label>
+  <%= f.file_field :avatar %>
   </div>
 
   <div class="actions">
