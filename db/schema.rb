@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2023_02_13_062703) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -74,6 +75,21 @@ ActiveRecord::Schema.define(version: 2023_02_13_062703) do
     t.index ["publisher_id"], name: "index_books_on_publisher_id"
   end
 
+  create_table "borrow_pays", force: :cascade do |t|
+    t.integer "library_card_id", null: false
+    t.integer "admin_id", null: false
+    t.date "borrow_date"
+    t.integer "book_id", null: false
+    t.text "note"
+    t.boolean "paid"
+    t.date "pay_day"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_borrow_pays_on_admin_id"
+    t.index ["book_id"], name: "index_borrow_pays_on_book_id"
+    t.index ["library_card_id"], name: "index_borrow_pays_on_library_card_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -105,7 +121,7 @@ ActiveRecord::Schema.define(version: 2023_02_13_062703) do
     t.datetime "remember_created_at"
     t.string "name"
     t.string "address"
-    t.integer "library_card_id"
+    t.integer "library_card_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_readers_on_email", unique: true
@@ -117,4 +133,8 @@ ActiveRecord::Schema.define(version: 2023_02_13_062703) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "categories"
   add_foreign_key "books", "publishers"
+  add_foreign_key "borrow_pays", "admins"
+  add_foreign_key "borrow_pays", "books"
+  add_foreign_key "borrow_pays", "library_cards"
+  add_foreign_key "readers", "library_cards"
 end

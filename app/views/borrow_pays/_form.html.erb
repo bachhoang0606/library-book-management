@@ -1,0 +1,70 @@
+<div class="container">
+<div class="d-flex justify-content-center">
+<div class="col-md-6">
+<div class="form-container">
+<%= form_with(model: borrow_pay, class:"form-horizontal") do |form| %>
+  <div class="mb-3 mt-3">
+    <%= form.label "図書カードコード", class: "form-label" %>
+    <div class="input-group">
+      <div class="input-group-text"><i class="fa-sharp fa-solid fa-address-card"></i></div>
+      <%= form.text_field :library_card_id, class: "form-control" %>
+    </div>
+    <% if borrow_pay.errors[:library_card_id].any? %>
+      <div class="invalid-feedback d-block" role="alert">
+        <% borrow_pay.errors[:library_card_id].each do |message| %>
+          <%= message %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= form.hidden_field :admin_id, :value => current_admin.id %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label "借りた日", class: "form-label" %>
+    <div class="input-group">
+      <div class="input-group-text"><i class="fa-solid fa-calendar-days"></i></div>
+      <%= form.date_field :borrow_date , :disabled => true, class: "form-control", value: Time.now.strftime('%Y-%m-%d')  %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label "本コード", class: "form-label" %>
+    
+    <div class="input-group">
+      <div class="input-group-text"><i class="fa-solid fa-barcode"></i></div>
+      <%= form.text_field :book_id, class: "form-control"%>
+    </div>
+    <% if borrow_pay.errors[:book_id].any? %>
+      <div class="invalid-feedback d-block" role="alert">
+          <% borrow_pay.errors[:book_id].each do |message| %>
+            <%= message %>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label "ノート", class: "form-label"%>
+    <%= form.text_area :note, class: "form-control" %>
+  </div>
+
+  <div class="actions text-center">
+    <%= form.submit "確認", class: "btn btn-primary", style: "min-height:12px;min-width:150px;" %>
+  </div>
+<% end %>
+</div></div></div></div></div>
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
