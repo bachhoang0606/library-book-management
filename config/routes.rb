@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'home/new'
   get 'home/create'
   resources :readers
-  resources :admins
+  get 'admins/show'
   devise_for :admins
   devise_for :readers, controllers: {
     sessions: 'readers/sessions',
