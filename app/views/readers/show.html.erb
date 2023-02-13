@@ -1,0 +1,35 @@
+<div class="container">
+<%= link_to "サインアウト", destroy_admin_session_path , method: :delete %>
+
+<h2>読者情報</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ユーザネム</th>
+            <th scope="col">エメル</th>
+            <th scope="col">アドレス</th>
+            <th scope="col">作った日</th>
+            <th scope="col">更新日</th>
+            <th scope="col">図書館カードID</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= @reader.name %></td>
+            <td><%= @reader.email %></td>
+            <td><%= @reader.address %></td>
+            <td><%= @reader.created_at %></td>
+            <td><%= @reader.updated_at %></td>
+            <td><% if @reader.library_card_id %>
+                    <%= @reader.library_card_id %>
+                <% else %>
+                    カードがありません
+                <% end %>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<%= link_to '戻る', '/readers/' %>
+</div>

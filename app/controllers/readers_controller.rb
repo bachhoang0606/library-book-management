@@ -9,6 +9,10 @@ class ReadersController < ApplicationController
         @reader = Reader.new
     end
 
+    def show 
+        @reader = Reader.find(params[:id])   
+    end
+
     def create
         @reader = Reader.new(reader_params)   
         if @reader.save   

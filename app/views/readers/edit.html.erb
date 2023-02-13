@@ -1,0 +1,44 @@
+<h2>読者情報変換</h2>
+
+<%= form_with(model: @reader) do |form| %>
+    <div class="field">
+        <%= form.label :ユーザネム %>
+        <%= form.text_field :name %>
+    </div>
+    <br />
+    <div class="field">
+        <%= form.label :アドレス %>
+        <%= form.text_field :address %>
+    </div>
+    <br />
+    <div class="field">
+        <%= form.label :エメル %>
+        <%= form.email_field :email %>
+    </div>
+    <br />
+    <div class="field">
+        <%= form.label :パスワード %>
+        <%= form.password_field :password %>
+    </div>
+    <br />
+    <div class="field">
+        <%= form.label :図書館カードID %>
+        <% @library_cards = LibraryCard.all %>
+        <% if @library_cards.length() > 0 %>
+            <% @arr = [] %>
+            <% @library_cards.each do |lib_card|
+                    @arr.append(lib_card.id)
+                end    
+            %>
+            <%= form.select :library_card_id, @arr %>
+        <% else %>
+        データベースにカードがありません
+        <% end %>
+    </div>
+    <br />
+    <div class="action">
+        <%= form.submit "サブミット" %>
+    </div>
+<% end %>
+<br />
+<%= link_to "戻る",  readers_path %>
