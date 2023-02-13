@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2023_02_02_140032) do
 
-
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -93,7 +92,7 @@ ActiveRecord::Schema.define(version: 2023_02_02_140032) do
     t.datetime "remember_created_at"
     t.string "name"
     t.string "address"
-    t.integer "library_card_id"
+    t.integer "library_card_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_readers_on_email", unique: true
@@ -106,5 +105,5 @@ ActiveRecord::Schema.define(version: 2023_02_02_140032) do
   add_foreign_key "borrow_pays", "admins"
   add_foreign_key "borrow_pays", "books"
   add_foreign_key "borrow_pays", "library_cards"
-
+  add_foreign_key "readers", "library_cards"
 end
