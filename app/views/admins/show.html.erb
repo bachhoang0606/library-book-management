@@ -1,0 +1,57 @@
+
+<div class="container">
+    <fieldset> 
+        <legend id="legend"> 
+            <h2>Admin Info</h2>
+        </legend> 
+        <% if current_admin.image.attached? %>
+            <%= image_tag current_admin.image , class:"imgcenter" %>
+        <% end %>
+        <table>
+            <tr> 
+                <td> Name:  </td> 
+                <td> <%= current_admin.name %> </td>
+            </tr>
+            <tr> 
+                <td> Date of Birth: </td>
+                <td > <%= current_admin.dob %> </td>
+            </tr>
+            <tr> 
+                <td> Phone Number: </td> 
+                <td> <%= current_admin.phone %></td>
+            </tr>
+            <tr> 
+                <td> Email:  </td> 
+                <td> <%= current_admin.email %></td>
+            </tr>      
+        </table>
+    </fieldset>
+</div>
+
+<style>
+.container{
+    margin: 0 auto;
+    width: 535px;
+}
+.imgcenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%; max-width: 30%; border: 5px solid black;
+}
+legend {margin-left: calc(40% - 25px - 18px);} 
+#legend {margin-left: calc(45% - 25px - 8px);} 
+#fieldset{width: 50%; margin: 0 auto; margin-top: 10%;}
+table{
+    border: 1px solid #333;
+}
+tr,td{padding: 15px; width: 200px;border: 1px solid #333;}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
