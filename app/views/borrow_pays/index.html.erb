@@ -1,3 +1,4 @@
+<br><br>
 <% if admin_signed_in? %> 
   <!-- The form -->
   <form class="example" action="/borrow_pays" method="get">
@@ -7,7 +8,7 @@
         <select class="form-select" aria-label="Default select example" name="paid">
           <option value="" selected>全部</option>
           <option value="false">借りている</option>
-          <option value="true">返していない</option>
+          <option value="true">返した</option>
         </select>
       </div>
       <div class="col-8">
@@ -30,12 +31,12 @@
       <%= link_to '借りている', borrow_pays_path(:paid => false), class: "nav-link", method: :get %>
     </li>
     <li class="nav-item">
-      <%= link_to '返していない', borrow_pays_path(:paid => true), class: "nav-link", method: :get %>
+      <%= link_to '返した', borrow_pays_path(:paid => true), class: "nav-link", method: :get %>
     </li>
   </ul>
 </nav>
 <% end %>
-<br><br><br><br>
+<br><br>
 <div class="container d-flex flex-column align-items-center">
 <h1 class="text-center">借り貸しリスト</h1>
 <hr>
@@ -84,12 +85,6 @@
 <% end %>
 
 </div>
-<% if reader_signed_in? %> 
-  <%= link_to "readerサインアウト", destroy_reader_session_path, method: :delete %><br>
-<% end %>
-<% if admin_signed_in? %> 
-  <%= link_to "adminサインアウト", destroy_admin_session_path, method: :delete %><br>
-<% end %>
 <style>
 * {
   box-sizing: border-box;

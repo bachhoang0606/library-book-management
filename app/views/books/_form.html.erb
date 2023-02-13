@@ -15,22 +15,22 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-
+  
   <div class="field">
     <%= form.label :category_id %>
-    <%= form.text_field :category_id %>
+    <%= form.select(:category_id, options_for_select(@arr, @position1))%>
   </div>
-
+  
   <div class="field">
     <%= form.label :publisher_id %>
-    <%= form.text_field :publisher_id %>
+    <%= form.select(:publisher_id, options_for_select(@arr1, @position2))%>
   </div>
 
   <div class="field">
     <%= form.label :year %>
     <%= form.number_field :year %>
   </div>
-
+    
   <div class="actions">
     <%= form.submit %>
   </div>

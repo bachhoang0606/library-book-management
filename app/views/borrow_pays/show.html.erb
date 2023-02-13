@@ -53,7 +53,8 @@
 =end%>
 <% if !@borrow_pay.paid && admin_signed_in? %>
   <%= form_with(model: @borrow_pay) do |form|%>
-    <%= form.hidden_field :paid, :value => true %>
+    <%= form.hidden_field :paid, value: true %>
+    <%= form.hidden_field :pay_day, value: Date.current %>
     <%= form.submit '本を返す', class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %>
   <% end %>
 <% end %>

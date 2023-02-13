@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :borrow_pays
   get 'home/new'
   get 'home/create'
+  resources :readers
   devise_for :admins
   devise_for :readers, controllers: {
     sessions: 'readers/sessions',
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :authors
   
-  resources :readers
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "borrow_pays#index"
   #get 'home/', to: "home#index"

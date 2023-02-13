@@ -3,7 +3,7 @@ class BorrowPay < ApplicationRecord
   belongs_to :admin
   belongs_to :book
 
-  validate :card_has_expired, :card_is_exit, :book_is_exit
+  validate :card_has_expired, :card_is_exit, :book_is_exit, on: :create
 
   private 
 

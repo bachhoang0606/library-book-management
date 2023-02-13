@@ -1,12 +1,15 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
-<h1>Library Cards</h1>
+<h1 class="text-center">Library Cards</h1>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="table-light">
     <tr>
+      <th>ID</th>
       <th>Start date</th>
       <th>Expiration date</th>
+      <th>Owner</th>
       <th>Note</th>
       <th colspan="3"></th>
     </tr>
@@ -15,9 +18,16 @@
   <tbody>
     <% @library_cards.each do |library_card| %>
       <tr>
+        <td><%= library_card.id %></td>
         <td><%= library_card.start_date %></td>
         <td><%= library_card.expiration_date %></td>
         <td><%= library_card.note %></td>
+        <td><% if library_card.reader %>
+              <%= link_to library_card.reader.email, reader_path(library_card.reader.id) %>
+            <% else %>
+              <%= link_to "Dont have owner", "#" %>
+            <% end %>
+        </div></td>
         <td><%= link_to 'Show', library_card %></td>
         <td><%= link_to 'Edit', edit_library_card_path(library_card) %></td>
         <td><%= link_to 'Destroy', library_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,5 +37,7 @@
 </table>
 
 <br>
-
-<%= link_to 'New Library Card', new_library_card_path %>
+<div class="text-center">
+  <%= link_to 'New Library Card', new_library_card_path, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %>
+<div>
+</div>
