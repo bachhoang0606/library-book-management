@@ -39,6 +39,7 @@ class ReadersController < ApplicationController
     def destroy
         @reader = Reader.find(params[:id])
         @reader.destroy
+        redirect_to readers_path
     end
 
     def reader_params   

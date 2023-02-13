@@ -25,7 +25,7 @@
         <td><% if library_card.reader %>
               <%= link_to library_card.reader.email, reader_path(library_card.reader.id) %>
             <% else %>
-              <%= link_to "Dont have owner", "#" %>
+              <%= link_to "Dont have owner", "#", disabled: true %>
             <% end %>
         </div></td>
         <td><%= link_to 'Show', library_card %></td>

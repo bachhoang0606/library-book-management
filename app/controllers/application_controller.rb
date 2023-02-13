@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     if resource_class == Reader
-      devise_parameter_sanitizer.permit :sign_up, keys: [:library_card_id]
-      devise_parameter_sanitizer.permit :account_update, keys: [:library_card_id]        
+      devise_parameter_sanitizer.permit :sign_up, keys: [:library_card_id, :name, :address]
+      devise_parameter_sanitizer.permit :account_update, keys: [:library_card_id, :name, :address, :avatar]        
     elsif resource_class == Admin 
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:dob,:phone,:image])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name,:dob,:phone,:image])
