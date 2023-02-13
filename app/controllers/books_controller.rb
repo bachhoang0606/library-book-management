@@ -23,8 +23,14 @@ class BooksController < ApplicationController
     publishers.each do |publisher|
         @arr1.push([publisher.name, publisher.id])
     end
+    Array @arr2 = [['Select author', 0]]
+    authors = Author.all
+    authors.each do |author|
+        @arr2.push([author.name, author.id])
+    end
     @position1 = 0
     @position2 = 0
+    @position3 = 0
     @book = Book.new
   end
 
@@ -40,9 +46,15 @@ class BooksController < ApplicationController
     publishers.each do |publisher|
         @arr1.push([publisher.name, publisher.id])
     end
+    Array @arr2 = [['Select author', 0]]
+    authors = Author.all
+    authors.each do |author|
+        @arr.push([author.name, author.id])
+    end
     # puts set_book.category_id
     @position1 = set_book.category_id
     @position2 = set_book.publisher_id
+    @position3 = set_book.author_id
   end
 
   # POST /books or /books.json
@@ -90,6 +102,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:name, :year, :category_id, :publisher_id)
+      params.require(:book).permit(:name, :year, :category_id, :publisher_id, :detail, :author_id, :image)
     end
 end

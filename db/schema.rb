@@ -75,9 +75,12 @@ ActiveRecord::Schema.define(version: 2023_02_13_062703) do
     t.string "name"
     t.integer "category_id", null: false
     t.integer "publisher_id", null: false
+    t.integer "author_id", null: false
     t.integer "year"
+    t.text "detail"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["category_id"], name: "index_books_on_category_id"
     t.index ["publisher_id"], name: "index_books_on_publisher_id"
   end
@@ -138,6 +141,7 @@ ActiveRecord::Schema.define(version: 2023_02_13_062703) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "books", "authors"
   add_foreign_key "books", "categories"
   add_foreign_key "books", "publishers"
   add_foreign_key "borrow_pays", "admins"

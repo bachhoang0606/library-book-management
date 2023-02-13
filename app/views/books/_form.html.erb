@@ -10,28 +10,51 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+<div class="form">
+  <div class="form-group">
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
   </div>
-  
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.select(:category_id, options_for_select(@arr, @position1))%>
+  <div class="form-group">
+      <div class="field">
+        <%= form.label :image %>
+        <%= form.file_field :image %><br>
+      </div>
   </div>
-  
-  <div class="field">
-    <%= form.label :publisher_id %>
-    <%= form.select(:publisher_id, options_for_select(@arr1, @position2))%>
+  <div class="form-group">
+      <div class="field">
+        <%= form.label :category_id %>
+        <%= form.select(:category_id, options_for_select(@arr, @position1))%>
+      </div>
   </div>
-
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.number_field :year %>
+  <div class="form-group">
+      <div class="field">
+        <%= form.label :publisher_id %>
+        <%= form.select(:publisher_id, options_for_select(@arr1, @position2))%>
+      </div>
   </div>
-    
+  <div class="form-group">
+      <div class="field">
+        <%= form.label :author_id %>
+        <%= form.select(:author_id, options_for_select(@arr2, @position2))%>
+      </div>
+  </div>
+  <div class="form-group">
+      <div class="field">
+        <%= form.label :year %>
+        <%= form.number_field :year %>
+      </div>
+  </div>
+  <div class="form-group">
+      <div class="field">
+        <%= form.label :detail %>
+        <%= form.text_field :detail %>
+      </div>
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>
+</div>
 <% end %>

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :authors
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root "borrow_pays#index"
+  # root "borrow_pays#index"
   #get 'home/', to: "home#index"
   #get '/home', to: 'home#index'
 end

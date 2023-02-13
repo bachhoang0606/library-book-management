@@ -6,6 +6,12 @@
 </p>
 
 <p>
+   <% if @book.image.attached? %>
+     <%= image_tag @book.image %>
+   <% end %>
+</p>
+
+<p>
   <strong>Category:</strong>
   <%= @book.category.name %>
 </p>
@@ -16,8 +22,18 @@
 </p>
 
 <p>
+  <strong>Author:</strong>
+  <%= @book.author.name %>
+</p>
+
+<p>
   <strong>Year:</strong>
   <%= @book.year %>
+</p>
+
+<p>
+  <strong>Detail:</strong>
+  <%= @book.detail %>
 </p>
 
 <h2>Review Form</h2>
@@ -36,7 +52,6 @@
      <% @book.book_review.each do |book_review| %>
      <li>
          <%= book_review.review %>
-         (<i><%= book_review.user.name if book_review.user %></i>)
      </li>
      <% end %>
  </ul>
