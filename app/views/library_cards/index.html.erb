@@ -1,16 +1,16 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
 
-<h1 class="text-center">Library Cards</h1>
+<h1 class="text-center">図書カード</h1>
 
 <table class="table">
   <thead class="table-light">
     <tr>
       <th>ID</th>
-      <th>Start date</th>
-      <th>Expiration date</th>
-      <th>Owner</th>
-      <th>Note</th>
+      <th>開始日</th>
+      <th>有効期限</th>
+      <th>オーナー</th>
+      <th>ノート</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,16 +21,16 @@
         <td><%= library_card.id %></td>
         <td><%= library_card.start_date %></td>
         <td><%= library_card.expiration_date %></td>
-        <td><%= library_card.note %></td>
         <td><% if library_card.reader %>
               <%= link_to library_card.reader.email, reader_path(library_card.reader.id) %>
             <% else %>
-              <%= link_to "Dont have owner", "#", disabled: true %>
+              <%= link_to "所有者がいない", "#", disabled: true %>
             <% end %>
         </div></td>
-        <td><%= link_to 'Show', library_card %></td>
-        <td><%= link_to 'Edit', edit_library_card_path(library_card) %></td>
-        <td><%= link_to 'Destroy', library_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= library_card.note %></td>
+        <td><%= link_to '見せる', library_card %></td>
+        <td><%= link_to '編集', edit_library_card_path(library_card) %></td>
+        <td><%= link_to '破壊', library_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,6 +38,6 @@
 
 <br>
 <div class="text-center">
-  <%= link_to 'New Library Card', new_library_card_path, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %>
+  <%= link_to '新しい図書館カード', new_library_card_path, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %>
 <div>
 </div>

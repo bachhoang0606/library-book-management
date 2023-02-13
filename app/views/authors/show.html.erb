@@ -1,19 +1,22 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @author.name %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @author.website %>
-</p>
-
-<p>
-  <strong>Note:</strong>
-  <%= @author.note %>
-</p>
-
-<%= link_to 'Edit', edit_author_path(@author) %> |
-<%= link_to 'Back', authors_path %>
+<br>
+<br>
+<br>
+<div class="container d-flex justify-content-center">
+<div class="card" style="width: 25rem;">
+  <div class="card-body">
+    <h5 class="card-title">  <strong>名前:</strong><%= @author.name %></h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>ウェブサイト:</strong><%= @author.website %></li>
+    <li class="list-group-item"><strong>ノート:</strong><%= @author.note %></li>
+  </ul>
+</div>
+</div>
+<br>
+<br>
+<br>
+<div class="text-center">
+    <%= link_to '編集', edit_author_path(@author), class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %> |
+    <%= link_to '戻る', authors_path, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %>
+</div>

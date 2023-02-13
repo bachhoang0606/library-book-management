@@ -10,28 +10,26 @@
       </ul>
     </div>
   <% end %>
+<br><br>
+  <div class="container w-75 h-50">
+    <div class="form-outline mb-4">
+      <%= form.text_field :name, class:"form-control", placeholder: "名前" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+    <div class="form-outline mb-4">
+      <%= form.text_field :address, class:"form-control", placeholder: "住所" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
+      <div class="form-outline mb-4">
+        <%= form.text_field :email, class:"form-control", placeholder: "メール"%>
+      </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :deputy %>
-    <%= form.text_area :deputy %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="form-outline mb-4">
+      <%= form.text_field :deputy, class:"form-control", placeholder: "デリゲート" %>
+    </div>
+    <!-- Submit button -->
+    <div class="text-center">
+    <%= form.submit "パブリッシャーの作成", class:"btn btn-primary mb-4" %> 
+    </div>
   </div>
 <% end %>

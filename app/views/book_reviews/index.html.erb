@@ -16,8 +16,8 @@
       <tr>
         <td><%= book_review.book_id %></td>
         <td><%= book_review.review %></td>
-        <td><%= link_to 'Show', book_review %></td>
-        <td><%= link_to 'Edit', edit_book_review_path(book_review) %></td>
+        <td><%= link_to '見せる', book_review %></td>
+        <td><%= link_to '編集', edit_book_review_path(book_review) %></td>
         <td><%= link_to 'Destroy', book_review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
