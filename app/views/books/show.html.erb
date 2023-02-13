@@ -20,6 +20,11 @@
   <%= @book.year %>
 </p>
 
+<p>
+  <strong>Detail:</strong>
+  <%= @book.detail %>
+</p>
+
 <h2>Review Form</h2>
  <%= form_with(model: @book_review, local:true) do |form| %>
  <div class="field">
