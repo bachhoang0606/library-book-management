@@ -1,0 +1,88 @@
+<div class="form_container">
+  <h2>Sign up</h2>
+  
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "admins/shared/error_messages", resource: resource %>
+
+    <div class="mb-3 row enter">
+      <%= f.label :image, class:"col-sm-2 col-form-label" %>
+      <%= f.file_field :image, class:"form-control-plaintext form-control"%>
+    </div>
+    
+    <div class="mb-3 row enter">
+      <%= f.label :name, class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :name, class:"form-control-plaintext form-control"%>
+      </div>
+    </div>
+
+    <div class="mb-3 row enter">
+      <%= f.label :dob, class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.date_field :dob, class:"form-control-plaintext form-control"%>
+      </div>
+    </div>
+
+    <div class="mb-3 row enter">
+      <%= f.label :phone, class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :phone, class:"form-control-plaintext form-control"%>
+      </div>
+    </div>
+
+    <div class="mb-3 row enter">
+      <%= f.label :email, class:"col-sm-2 col-form-label"%>
+      <div class="col-sm-10">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control-plaintext form-control" %>
+      </div>
+    </div>
+  
+    <div class="mb-3 row enter">
+      <%= f.label :password, class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control-plaintext form-control" %>
+      </div>
+    </div>
+
+    <div class="mb-3 row enter">
+      <%= f.label :password_confirmation, class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control-plaintext form-control" %>
+      </div>
+    </div>
+
+    <div class="actions enter">
+    <%= f.submit "Sign up", class:"btn btn-primary" %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= render "admins/shared/links" %>
+  </div>
+</div>
+
+
+<style>
+  .form_container {
+    width: 50%;
+    min-height: 600px;
+    margin-left: 25%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  .form_container h2,
+  .form_container .actions {
+    text-align: center;
+  }
+
+  .form_container .enter {
+    padding:10px 10px;
+  }
+
+  .form-control{
+    border: 1px solid #ccc;
+  }
+</style>
+

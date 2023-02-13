@@ -1,0 +1,60 @@
+<div class="container d-flex justify-content-center">
+    <fieldset> 
+            <legend id="legend"> 
+                <h2>管理者情報</h2>
+            </legend> 
+            <% if current_admin.image.attached? %>
+                <%= image_tag current_admin.image , class:"imgcenter" %>
+            <% end %>
+            <br><br>
+            <table>
+                <tr> 
+                    <td> 名前:  </td> 
+                    <td> <%= current_admin.name %> </td>
+                </tr>
+                <tr> 
+                    <td> 生年月日: </td>
+                    <td > <%= current_admin.dob %> </td>
+                </tr>
+                <tr> 
+                    <td> 電話番号: </td> 
+                    <td> <%= current_admin.phone %></td>
+                </tr>
+                <tr> 
+                    <td> メール:  </td> 
+                    <td> <%= current_admin.email %></td>
+                </tr>      
+            </table>
+    </fieldset>
+</div>
+<br>
+<div class="text-center">
+  <%= link_to 'ホームページ', root_path, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %>
+</div>
+<br>
+<div class="text-center">
+  <%= link_to '編集', edit_admin_registration_path, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %>
+</div>
+<style>
+.imgcenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%; max-width: 30%; border: 5px solid black;
+}
+legend {margin-left: calc(40% - 25px - 18px);} 
+#legend {margin-left: calc(45% - 25px - 8px);} 
+#fieldset{width: 50%; margin: 0 auto; margin-top: 10%;}
+table{
+    border: 1px solid #333;
+}
+tr,td{padding: 15px; width: 200px;border: 1px solid #333;}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>

@@ -6,13 +6,24 @@
 </p>
 
 <p>
+   <% if @book.image.attached? %>
+     <%= image_tag @book.image %>
+   <% end %>
+</p>
+
+<p>
   <strong>Category:</strong>
-  <%= @book.category_id %>
+  <%= @book.category.name %>
 </p>
 
 <p>
   <strong>Publisher:</strong>
-  <%= @book.publisher_id %>
+  <%= @book.publisher.name %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @book.author.name %>
 </p>
 
 <p>
@@ -20,5 +31,30 @@
   <%= @book.year %>
 </p>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<p>
+  <strong>Detail:</strong>
+  <%= @book.detail %>
+</p>
+
+<h2>Review Form</h2>
+ <%= form_with(model: @book_review, local:true) do |form| %>
+ <div class="field">
+    <%= form.text_area:review %>
+    <%= form.hidden_field :book_id, :value => @book.id %>
+ </div>
+ <div class="actions">
+     <%= form.submit %>
+ </div>
+ <% end %>
+ 
+ <h2>Review List</h2>
+ <ul>
+     <% @book.book_review.each do |book_review| %>
+     <li>
+         <%= book_review.review %>
+     </li>
+     <% end %>
+ </ul>
+
+<%= link_to '編集', edit_book_path(@book) %> |
+<%= link_to '戻る', books_path %>

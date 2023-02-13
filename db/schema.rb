@@ -63,15 +63,41 @@ ActiveRecord::Schema.define(version: 2023_02_13_062703) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "book_reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.text "review"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "name"
     t.integer "category_id", null: false
     t.integer "publisher_id", null: false
+    t.integer "author_id", null: false
     t.integer "year"
+    t.text "detail"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["category_id"], name: "index_books_on_category_id"
     t.index ["publisher_id"], name: "index_books_on_publisher_id"
+  end
+
+  create_table "borrow_pays", force: :cascade do |t|
+    t.integer "library_card_id", null: false
+    t.integer "admin_id", null: false
+    t.date "borrow_date"
+    t.integer "book_id", null: false
+    t.text "note"
+    t.boolean "paid"
+    t.date "pay_day"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_borrow_pays_on_admin_id"
+    t.index ["book_id"], name: "index_borrow_pays_on_book_id"
+    t.index ["library_card_id"], name: "index_borrow_pays_on_library_card_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -105,7 +131,7 @@ ActiveRecord::Schema.define(version: 2023_02_13_062703) do
     t.datetime "remember_created_at"
     t.string "name"
     t.string "address"
-    t.integer "library_card_id"
+    t.integer "library_card_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_readers_on_email", unique: true
@@ -115,6 +141,11 @@ ActiveRecord::Schema.define(version: 2023_02_13_062703) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "books", "authors"
   add_foreign_key "books", "categories"
   add_foreign_key "books", "publishers"
+  add_foreign_key "borrow_pays", "admins"
+  add_foreign_key "borrow_pays", "books"
+  add_foreign_key "borrow_pays", "library_cards"
+  add_foreign_key "readers", "library_cards"
 end

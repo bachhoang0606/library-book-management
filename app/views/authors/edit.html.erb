@@ -1,6 +1,8 @@
-<h1>Editing Author</h1>
+<h1 class="text-center">著者の編集</h1>
 
 <%= render 'form', author: @author %>
 
-<%= link_to 'Show', @author %> |
-<%= link_to 'Back', authors_path %>
+<div class="text-center">
+  <%= link_to '見せる', @author, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %> |
+  <%= link_to '戻る', authors_path, class: "btn btn-outline-secondary", style: "min-height:12px;min-width:150px;" %>
+</div>

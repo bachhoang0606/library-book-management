@@ -1,0 +1,108 @@
+<div class="form_container">
+  <h2>管理者を編集</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "admins/shared/error_messages", resource: resource %>
+    
+
+
+    <div class="mb-3 row enter">
+      <%= f.label "画像", class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.file_field :image, class:"form-control-plaintext form-control"%>
+      </div>
+    </div>
+
+    <div class="mb-3 row enter">
+      <%= f.label "名前", class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :name, autofocus: true, class:"form-control-plaintext form-control" %>
+      </div>
+    </div>
+
+    <div class="mb-3 row enter">
+      <%= f.label "電話", class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :phone, autofocus: true, class:"form-control-plaintext form-control" %>
+        </div>
+    </div>
+
+    <div class="mb-3 row enter">
+      <%= f.label "生年月日", class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.date_field :dob, autofocus: true, class:"form-control-plaintext form-control" %>
+        </div>
+    </div>
+
+    <div class="mb-3 row enter">
+      <%= f.label "メール", class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control-plaintext form-control" %>
+        </div>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>現在、次の確認を待っています: <%= resource.unconfirmed_email %></div>
+    <% end %>
+    
+    <div class="mb-3 row enter">
+      <%= f.label "パスワード", class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <i>(変更したくない場合は空白のままにしてください)</i>
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control-plaintext form-control" %>
+        <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> 文字以上</em>
+      <% end %>
+      </div>
+    </div>
+
+    <div class="mb-3 row enter">
+      <%= f.label "パスワードの確認", class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control-plaintext form-control" %>
+      </div>
+    </div>
+
+    <div class="mb-3 row enter">
+      <%= f.label "現在のパスワード", class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <i>(変更を確認するには、現在のパスワードが必要です)</i>
+        <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control-plaintext form-control" %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "更新" ,class:"btn btn-primary"%>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= button_to "キャンセル", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:"btn btn-danger" %>
+    <%= link_to "戻る", :back %>
+  </div>
+
+</div>
+
+<style>
+  .form_container {
+    width: 50%;
+    min-height: 600px;
+    margin-left: 25%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  .form_container h2,
+  .form_container .actions {
+    text-align: center;
+  }
+
+  .form_container .enter {
+    padding:10px;
+  }
+
+  .form-control{
+    border: 1px solid #ccc;
+  }
+</style>
+
