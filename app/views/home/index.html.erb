@@ -1,5 +1,14 @@
-<h1>Home</h1>
 <%= link_to "sign out", destroy_reader_session_path , method: :delete %>
 
-
 <%= link_to 'edit account', reader_registration_path, method: :PATCH %>
+<p></p>
+<h6>Profile</h6>
+<% if current_reader.avatar.present? %>
+<%= image_tag(current_reader.avatar) %>
+<% else %>
+<img alt="image" class="rounded-circle" src="/assets/default_avatar_small.jpg">
+<% end %>
+<br />
+username: <%= current_reader.name %><br />
+email: <%= current_reader.email %><br />
+address: <%= current_reader.address %><br />
