@@ -20,5 +20,26 @@
   <%= @book.year %>
 </p>
 
+<h2>Review Form</h2>
+ <%= form_with(model: @book_review, local:true) do |form| %>
+ <div class="field">
+    <%= form.text_area:review %>
+    <%= form.hidden_field :book_id, :value => @book.id %>
+ </div>
+ <div class="actions">
+     <%= form.submit %>
+ </div>
+ <% end %>
+ 
+ <h2>Review List</h2>
+ <ul>
+     <% @book.book_review.each do |book_review| %>
+     <li>
+         <%= book_review.review %>
+         (<i><%= book_review.user.name if book_review.user %></i>)
+     </li>
+     <% end %>
+ </ul>
+
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
