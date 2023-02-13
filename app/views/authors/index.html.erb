@@ -30,7 +30,7 @@
                           <td><%= author.note %></td>
                           <td><%= link_to '見せる', author %></td>
                           <td><%= link_to '編集', edit_author_path(author) %></td>
-                          <td><%= link_to '破壊', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                          <td><%= link_to '破壊', author, method: :delete, data: { confirm: '本気ですか?' } %></td>
                         </tr>
                       <% end %>
                     </tbody>

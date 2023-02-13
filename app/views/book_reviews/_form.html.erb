@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :book_id %>
+    <%= form.label :book_id, "ID本" %>
     <%= form.number_field :book_id %>
   </div>
 
   <div class="field">
-    <%= form.label :review %>
+    <%= form.label :review, "レビュー" %>
     <%= form.text_area :review %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit　"作成" %>
   </div>
 <% end %>

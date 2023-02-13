@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>名前:</strong>
   <%= @book.name %>
 </p>
 
@@ -12,42 +12,42 @@
 </p>
 
 <p>
-  <strong>Category:</strong>
+  <strong>カテゴリ:</strong>
   <%= @book.category.name %>
 </p>
 
 <p>
-  <strong>Publisher:</strong>
+  <strong>出版社:</strong>
   <%= @book.publisher.name %>
 </p>
 
 <%
 =begin%>
  <p>
-  <strong>Author:</strong>
+  <strong>著者:</strong>
   <%= @book.author.name %>
 </p> 
 <%
 =end%>
 
 <p>
-  <strong>Year:</strong>
+  <strong>年:</strong>
   <%= @book.year %>
 </p>
 
 <%
 =begin%>
  <p>
-  <strong>Detail:</strong>
+  <strong>詳細:</strong>
   <%= @book.detail %>
 </p> 
 <%
 =end%>
 
-<h2>Review Form</h2>
+<h2>レビューフォーム</h2>
  <%= form_with(model: @book_review, local:true) do |form| %>
  <div class="field">
-    <%= form.text_area:review %>
+    <%= form.text_area:review, placeholder:"レビュー" %>
     <%= form.hidden_field :book_id, :value => @book.id %>
  </div>
  <div class="actions">
@@ -55,7 +55,7 @@
  </div>
  <% end %>
  
- <h2>Review List</h2>
+ <h2>レビューリスト</h2>
  <ul>
      <% @book.book_review.each do |book_review| %>
      <li>
