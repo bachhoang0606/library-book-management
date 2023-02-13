@@ -19,6 +19,12 @@
   </div>
   <div class="form-group">
       <div class="field">
+        <%= form.label :image %>
+        <%= form.file_field :image %><br>
+      </div>
+  </div>
+  <div class="form-group">
+      <div class="field">
         <%= form.label :category_id %>
         <%= form.select(:category_id, options_for_select(@arr, @position1))%>
       </div>
@@ -44,7 +50,7 @@
   <div class="form-group">
       <div class="field">
         <%= form.label :detail %>
-        <%= form.text :detail %>
+        <%= form.text_field :detail %>
       </div>
   </div>
   <div class="actions">
