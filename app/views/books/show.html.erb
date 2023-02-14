@@ -21,28 +21,24 @@
   <%= @book.publisher.name %>
 </p>
 
-<%
-=begin%>
+
  <p>
   <strong>Author:</strong>
   <%= @book.author.name %>
 </p> 
-<%
-=end%>
+
 
 <p>
   <strong>Year:</strong>
   <%= @book.year %>
 </p>
 
-<%
-=begin%>
+
  <p>
   <strong>Detail:</strong>
   <%= @book.detail %>
 </p> 
-<%
-=end%>
+
 
 <h2>Review Form</h2>
  <%= form_with(model: @book_review, local:true) do |form| %>

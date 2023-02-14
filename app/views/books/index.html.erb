@@ -21,15 +21,16 @@
             <td><%= book.name %></td>
             <td><%= book.category.name %></td>
             <td><%= book.publisher.name %></td>
-            <%
-=begin%>
+      
  <td><%= book.author.name %></td> 
-<%
-=end%>
+
             <td><%= book.year %></td>
             <td><%= link_to 'Show', book %></td>
-            <td><%= link_to 'Edit', edit_book_path(book) %></td>
-            <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if admin_signed_in? %>
+              
+              <td><%= link_to 'Edit', edit_book_path(book) %></td>
+              <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

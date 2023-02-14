@@ -4,14 +4,11 @@
 <br>
 <div class="row">
   <div class="col-4"> 
-    <img src="..." class="img-fluid rounded-start" alt="イメージ" >
-        <%
-=begin%>
-<% if borrow_pay.book.image.attached? %>
-          <%= image_tag borrow_pay.book.image, class: "img-fluid rounded-start", alt: "イメージ" %>
-        <% end %> 
-<%
-=end%>
+
+    <% if @borrow_pay.library_card.reader.avatar.attached? %>
+      <%= image_tag @borrow_pay.library_card.reader.avatar, class: "img-fluid rounded-start", alt: "イメージ", style:"width: 18rem;" %>
+    <% end %> 
+
   </div>
   <div class="col-8">
     <p>図書館カードコード: <%= @borrow_pay.library_card_id %></p>
@@ -23,14 +20,9 @@
 <br>
 <div class="row">
   <div class="col-4"> 
-    <img src="..." class="img-fluid rounded-start" alt="本のイメージ" >
-        <%
-=begin%>
-<% if borrow_pay.book.image.attached? %>
-          <%= image_tag borrow_pay.book.image, class: "img-fluid rounded-start", alt: "イメージ" %>
-        <% end %> 
-<%
-=end%>
+      <% if @borrow_pay.book.image.attached? %>
+        <%= image_tag @borrow_pay.book.image, class: "img-fluid rounded-start", alt: "イメージ", style:"width: 18rem;" %>
+      <% end %> 
   </div>
   <div class="col-8">
     <p>本のコード: <%= @borrow_pay.book_id %></p>

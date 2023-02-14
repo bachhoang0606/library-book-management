@@ -44,14 +44,10 @@
   <div class="card mb-3 mt-3 border-<%= borrow_pay.paid ? "success" : "warning"%>" style="min-width: 1000px; max-width:1500px;">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="..." class="img-fluid rounded-start" alt="イメージ" >
-        <%
-=begin%>
 <% if borrow_pay.book.image.attached? %>
-          <%= image_tag borrow_pay.book.image, class: "img-fluid rounded-start", alt: "イメージ" %>
+          <%= image_tag borrow_pay.book.image, class: "img-fluid rounded-start", alt: "イメージ" , style:"width: 10rem;"%>
         <% end %> 
-<%
-=end%>
+
       </div>
       <div class="col-md-8">
         <div class="card-header">書名: <%= borrow_pay.book.name %></div>
